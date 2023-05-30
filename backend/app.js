@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const router = require('./routes/index');
 const { createUser, login } = require('./controllers/auth');
 const auth = require('./middlewares/auth');
@@ -12,6 +13,7 @@ const {
 } = process.env;
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(
   express.urlencoded({ extended: true }),
