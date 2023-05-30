@@ -16,8 +16,8 @@ app.use(express.json());
 app.use(
   express.urlencoded({ extended: true }),
 );
-app.post('/signin', loginValidation, function(req, res) {login});
-app.post('/signup', createUserValidation, function(req, res) {createUser});
+app.post('/signin', loginValidation, login);
+app.post('/signup', createUserValidation, createUser);
 app.use(auth);
 app.use(router);
 app.use(errors());

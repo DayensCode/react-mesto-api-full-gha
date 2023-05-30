@@ -6,7 +6,7 @@ const {
 const { createCardValidaton, cardIdValidation } = require('../middlewares/validation');
 
 cardsRouter.get('/', getAllCards);
-cardsRouter.post('/', createCardValidaton, createCard);
+cardsRouter.post('/', createCardValidaton, function(req, res) {createCard});
 cardsRouter.delete('/:cardId', cardIdValidation, deleteCardById);
 cardsRouter.put('/:cardId/likes', cardIdValidation, addLike);
 cardsRouter.delete('/:cardId/likes', cardIdValidation, deleteLike);
