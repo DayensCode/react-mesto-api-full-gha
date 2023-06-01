@@ -10,6 +10,6 @@
 
 IP-адрес ||158.160.72.64||
 
-[Frontend](https://api.mymesto.nomoredomains.rocks)
+[Frontend](https://mymesto.nomoredomains.rocks)
 
 [Backend](https://api.mymesto.nomoredomains.rocks)
