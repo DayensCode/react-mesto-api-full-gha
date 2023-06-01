@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
@@ -21,6 +22,11 @@ app.use(
 app.post('/signin', loginValidation, login);
 app.post('/signup', createUserValidation, createUser);
 app.use(auth);
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Server is about to crash');
+  }, 0);
+});
 app.use(router);
 app.use(errors());
 
