@@ -17,11 +17,11 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   // Импортировали контекст и подписываемся на него
   const currentUser = useContext(CurrentUserContext);
   // Определяем, являемся ли мы владельцем текущей карточки используя поле контекста
-  const isOwn = card.owner._id === currentUser._id;
+  const isOwn = card.owner === currentUser._id;
 
   // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
   // Используем поле контекста в коллбеке метода
-  const isLiked = card.likes.some(i => i._id === currentUser._id);
+  const isLiked = card.likes.some(id => id === currentUser._id);
   // Создаём переменную, которую после зададим в `className` для кнопки лайка
   // Активный класс задастся только если изЛайкд вернет тру
   const cardLikeButtonClassName = ( 

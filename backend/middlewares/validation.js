@@ -55,13 +55,13 @@ module.exports.userIdValidation = celebrate({
 
 module.exports.createCardValidation = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30).required(),
+    name: Joi.string().required().min(2).max(30),
     link: Joi.string().required().custom(urlValidation),
   }),
 });
 
 module.exports.cardIdValidation = celebrate({
-  body: Joi.object().keys({
-    cardId: Joi.string().required().custom(idValidation),
+  params: Joi.object().keys({
+    cardId: Joi.string().required().hex().length(24),
   }),
 });

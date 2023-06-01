@@ -73,7 +73,7 @@ function App() {
   // Функция лайка карточки
   const handleCardLike = (card) => {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((id) => id === currentUser._id);
 
     // Отправляем запрос в API(передаем айди нужной крточки и фалс-значение проверки нашего лайка)
     // Получаем обновлённые данные карточки
@@ -173,22 +173,23 @@ function App() {
       .finally(handleInfoTooltip)
   }
 
+  // При монтировании App описан эффект, проверяющий наличие токена и его валидности
   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if(jwt) {
+    const token = localStorage.getItem("jwt");
+    if (token) {
       auth
-        .getToken(jwt)
+        .getToken(token)
         .then((res) => {
           if(res) {
             setIsLogged(true);
-            setUserEmail(res.data.email);// Обновляем стейт почты
+            setUserEmail(res.email);// Обновляем стейт почты
           }
         })
         .catch((err) => {
           console.log(err);
-        })
+        });
     }
-  }, [])
+  }, [isLogged])
 
   // Проеряем токен
   useEffect(() => {
@@ -199,9 +200,8 @@ function App() {
 
   // Эффект при монтировании делающий запрос за пользовательской информацией и карточками
   useEffect(() => {
-    if (isLogged === false) {
-      return;
-    }
+    const token = localStorage.getItem("jwt");
+    if (token) {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([userData, serverCards]) => {
         // Обновляем стейт-переменные из полученных значений
@@ -211,6 +211,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
+    }
   }, [isLogged]);
 
   // Функция выхода из профиля

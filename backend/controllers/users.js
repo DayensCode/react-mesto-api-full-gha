@@ -15,7 +15,7 @@ module.exports.getUser = (req, res, next) => {
 
 module.exports.getAllUsers = (req, res, next) => {
   userSchema.find({})
-    .then((users) => res.status(200).send({ data: users }))
+    .then((users) => res.status(200).send(users))
     .catch(next);
 };
 
@@ -26,7 +26,7 @@ module.exports.getUserById = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('User cannot be found');
       } else {
-        res.status(200).send({ data: user });
+        res.status(200).send(user);
       }
     })
     .catch(next);

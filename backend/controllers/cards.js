@@ -6,8 +6,7 @@ const NotFoundError = require('../errors/not-found-error');
 
 module.exports.getAllCards = (req, res, next) => {
   cardSchema.find({})
-    .populate(['owner', 'likes'])
-    .then((cards) => res.status(200).send({ data: cards }))
+    .then((cards) => res.status(200).send(cards))
     .catch(next);
 };
 
@@ -15,7 +14,6 @@ module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
   const owner = req.user._id;
   cardSchema.create({ name, link, owner })
-    .populate(['owner', 'likes'])
     .then((card) => res.status(201).send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -29,7 +27,6 @@ module.exports.createCard = (req, res, next) => {
 module.exports.deleteCardById = (req, res, next) => {
   const { cardId } = req.params;
   cardSchema.findById(cardId)
-    .populate(['owner', 'likes'])
     .then((card) => {
       if (!card) {
         throw new NotFoundError('Not found');
@@ -48,7 +45,6 @@ module.exports.addLike = (req, res, next) => {
       { $addToSet: { likes: req.user._id } },
       { new: true },
     )
-    .populate(['owner', 'likes'])
     .then((card) => {
       if (!card) {
         throw new NotFoundError('Not found');
@@ -70,7 +66,6 @@ module.exports.deleteLike = (req, res, next) => {
       { $pull: { likes: req.user._id } },
       { new: true },
     )
-    .populate(['owner', 'likes'])
     .then((card) => {
       if (!card) {
         throw new NotFoundError('Not found');
