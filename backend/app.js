@@ -14,6 +14,13 @@ const {
 } = process.env;
 
 const app = express();
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Server is about to crash');
+  }, 0);
+});
+
 app.use(cors());
 app.use(express.json());
 app.use(
@@ -22,11 +29,7 @@ app.use(
 app.post('/signin', loginValidation, login);
 app.post('/signup', createUserValidation, createUser);
 app.use(auth);
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Server is about to crash');
-  }, 0);
-});
+
 app.use(router);
 app.use(errors());
 
