@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес ||158.160.72.64||
+IP-адрес 158.160.72.64
 
 [Frontend](https://mymesto.nomoredomains.rocks)
 
