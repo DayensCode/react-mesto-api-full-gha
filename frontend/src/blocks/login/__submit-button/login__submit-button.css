@@ -18,3 +18,9 @@
 .login__submit-button:hover {
 	opacity: .85;
 }
+
+@media screen and (max-width: 359px) {
+	.login__submit-button {
+		width: 300px;
+	}
+	}

@@ -10,3 +10,9 @@
 .login__input:focus {
 	outline: none;
 }
+
+@media screen and (max-width: 359px) {
+	.login__input {
+		width: 300px;
+	}
+	}
