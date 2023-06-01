@@ -1,7 +1,9 @@
 const jwt = require('jsonwebtoken');
 
 const UnauthorizedError = require('../errors/unauthorized-error');
-const { JWT_SECRET } = require('../config');
+
+const { JWT_SECRET, NODE_ENV } = process.env;
+const { DEV_SECRET, NODE_PRODUCTION } = require('../config');
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
@@ -11,7 +13,7 @@ module.exports = (req, res, next) => {
   }
   const token = authorization.replace('Bearer ', '');
   try {
-    payload = jwt.verify(token, process.env.NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
+    payload = jwt.verify(token, NODE_ENV === NODE_PRODUCTION ? JWT_SECRET : DEV_SECRET);
   } catch (err) {
     return next(UnauthorizedError('You need to log in'));
   }
