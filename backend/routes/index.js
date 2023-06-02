@@ -6,7 +6,7 @@ const NotFoundError = require('../errors/not-found-error');
 router.use('/users', usersRouter);
 router.use('/cards', cardsRouter);
 router.use('/*', (req, res, next) => {
-  next(NotFoundError('404: Not Found'));
+  next(new NotFoundError('404: Not Found'));
 });
 
 module.exports = router;
