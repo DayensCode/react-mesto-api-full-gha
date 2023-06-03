@@ -30,10 +30,10 @@ module.exports.createUser = (req, res, next) => {
         })
         .catch((err) => {
           if (err.code === 11000) {
-            return next(ConflictError('This email has already been registered'));
+            return next(new ConflictError('This email has already been registered'));
           }
           if (err.name === 'Validation Error') {
-            return next(BadRequestError('Invalid data'));
+            return next(new BadRequestError('Invalid data'));
           }
           return next(err);
         });

@@ -7,7 +7,7 @@ module.exports.getUser = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('User cannot be found');
       } else {
-        res.status(200).send(user);
+        res.send(user);
       }
     })
     .catch(next);
@@ -15,7 +15,7 @@ module.exports.getUser = (req, res, next) => {
 
 module.exports.getAllUsers = (req, res, next) => {
   userSchema.find({})
-    .then((users) => res.status(200).send(users))
+    .then((users) => res.send(users))
     .catch(next);
 };
 
@@ -26,7 +26,7 @@ module.exports.getUserById = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('User cannot be found');
       } else {
-        res.status(200).send(user);
+        res.send(user);
       }
     })
     .catch(next);
@@ -42,7 +42,7 @@ module.exports.updateProfile = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('User cannot be found');
       } else {
-        res.status(200).send(user);
+        res.send(user);
       }
     })
     .catch(next);
@@ -58,7 +58,7 @@ module.exports.updateAvatar = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('User cannot be found');
       } else {
-        res.status(200).send(user);
+        res.send(user);
       }
     })
     .catch(next);
