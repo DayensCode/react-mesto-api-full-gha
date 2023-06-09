@@ -8,6 +8,6 @@
 
 IP-адрес 158.160.72.64
 
-Frontend (https://mymesto.nomoredomains.rocks)
+Frontend https://mymesto.nomoredomains.rocks
 
-Backend (https://api.mymesto.nomoredomains.rocks)
+Backend https://api.mymesto.nomoredomains.rocks
