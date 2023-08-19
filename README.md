@@ -4,7 +4,7 @@
 
 Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. Бэкенд расположен в директории `backend/`, а фронтенд - в `frontend/`.
 
-![image](https://user-images.githubusercontent.com/92729800/204303554-fd708625-c724-46f9-9045-261b69f63b27.png)
+![image](https://github.com/DayensCode/react-mesto-api-full-gha/blob/main/screenshot-for-readme.png)
 
 ## Запуск проекта
 
