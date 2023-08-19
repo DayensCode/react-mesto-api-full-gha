@@ -1,4 +1,5 @@
 .profile__change-button {
+	border: none;
 	content: "";
 	background: black;
 	width: 100%;
